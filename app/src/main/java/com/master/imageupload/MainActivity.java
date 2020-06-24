@@ -31,6 +31,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 
 import okhttp3.MediaType;
 import okhttp3.MultipartBody;
@@ -117,21 +118,21 @@ public class MainActivity extends AppCompatActivity implements PickImageDialogIn
         if(requestCode == 201 && resultCode == RESULT_OK){
                 Uri content_describer = data.getData();
                 try {
-                    File file = new File(content_describer.getPath());
+                    Log.d("TAG", "File Uri: " + content_describer.toString());
+
+                    File file = FileUtil.from(MainActivity.this,content_describer);
+
+                    Log.d("TAG", "File Path: " + file.getPath());
+
+                    Log.d("file", "File...:::: uti - "+file .getPath()+" file -" + file + " : " + file .exists());
+
+
+
                     uploadPhotoToServer(file);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
         }
-    }
-
-    private String getAudioPath(Uri uri) {
-        String[] data = {MediaStore.Audio.Media.DATA};
-        CursorLoader loader = new CursorLoader(getApplicationContext(), uri, data, null, null, null);
-        Cursor cursor = loader.loadInBackground();
-        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Audio.Media.DATA);
-        cursor.moveToFirst();
-        return cursor.getString(column_index);
     }
 
     @Override

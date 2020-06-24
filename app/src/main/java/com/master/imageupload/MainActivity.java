@@ -104,30 +104,13 @@ public class MainActivity extends AppCompatActivity implements PickImageDialogIn
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-//        if (mPickImageDialog == null) {
-//            mPickImageDialog = new PickImageDialog(this);
-//            mPickImageDialog.delegate = this;
-//            mPickImageDialog.resetFiles(mImageFileUri, mImageFile);
-//        }
-//        if (resultCode == Activity.RESULT_OK) {
-//            mPickImageDialog.onActivityResult(requestCode, data);
-//        } else {
-//            mPickImageDialog.onResultCancelled();
-//        }
-
         if(requestCode == 201 && resultCode == RESULT_OK){
                 Uri content_describer = data.getData();
                 try {
                     Log.d("TAG", "File Uri: " + content_describer.toString());
-
                     File file = FileUtil.from(MainActivity.this,content_describer);
-
                     Log.d("TAG", "File Path: " + file.getPath());
-
                     Log.d("file", "File...:::: uti - "+file .getPath()+" file -" + file + " : " + file .exists());
-
-
-
                     uploadPhotoToServer(file);
                 } catch (Exception e) {
                     e.printStackTrace();

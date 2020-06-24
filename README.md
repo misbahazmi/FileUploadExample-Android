@@ -1,4 +1,4 @@
-# Image-Upload-Using-Retrofit-Library
+# File Upload Example - Android
 Android: Upload Image on Server using Retrofit Library
 
 Here we have used below libs:

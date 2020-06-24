@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">ImageUpload</string>
+    <string name="upload_image">Upload Image</string>
+    <string name="camera">CAMERA PERMISSION</string>
+    <string name="camera_desc">Camera open and Sd card read permission needed .</string>
+</resources>
